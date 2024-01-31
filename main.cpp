@@ -2,8 +2,8 @@
 
 
 int main(){
-    Address.read_file();
-    Address.sort_file();
-    Address.close_file();
+    Address adr_file;
+    adr_file.read_file();
+    adr_file.sort_file();
     return 0;
 }
