@@ -8,6 +8,9 @@
 #include <string>
 #include <cstring>
 #include <vector>
+#include <cstddef>
+#include <vector>
+
 
 class Address
 {
@@ -16,11 +19,10 @@ public:
     void read_file();
     void output_file();
 private:
-    int size; // house_number, apart_number;
-    // std::string city, street;
+    std::string combinedString;
+    std::string line;
+    int size; 
     std::vector<std::string> vec;
-
-    
 };
 
 

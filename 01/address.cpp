@@ -1,16 +1,20 @@
 #include "address.hpp"
-#include <cstddef>
-#include <vector>
+
 
 void Address::read_file(){
-    std::ifstream fin("in.txt");
+   std::ifstream fin("in.txt");
     if(fin.is_open()){
         fin >> size;
-       
-        for(size_t i = 0; i < vec.size(); ++i){
-            fin >> std::vectorvec[i];
-            std::cout << vec[i] << std::endl;
+       for (int i = 0; i < size; ++i){
+       for(int j = 0; j < 4 && std::getline(fin,line); i++){
+         combinedString += line;
+         if (j < 3){
+        combinedString += ",";
            }
+       }
+      vec[i] = combinedString;
+      
+       }
         fin.close();
     } else {
         std::cout<< "FILE OPEN ERROR\n";
@@ -19,11 +23,16 @@ void Address::read_file(){
 
 void Address::output_file(){
     std::ofstream fout("out.txt");
+
     if(fout.is_open()){
-        for (size_t i = vec.size(); i > vec.size() - 4; --i){
+        for (size_t i = vec.size(); i > 0; --i){
             fout << vec[i];
         }
+    } else {
+        std::cout<< "FILE OPEN ERROR\n";
     }
+   
+    fout.close();
 }
 
 
