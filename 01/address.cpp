@@ -1,18 +1,20 @@
 #include "address.hpp"
 
 
-void Address::read_file(){
-   std::ifstream fin("in.txt");
+void Address::read_file(std::ifstream &fin){
     if(fin.is_open()){
-        fin >> size;
-       for (int i = 0; i < size; ++i){
-       for(int j = 0; j < 4 && std::getline(fin,line); i++){
-         combinedString += line;
-         if (j < 3){
-        combinedString += ",";
+       std::getline(fin,take_size);
+      size = stoi(take_size);
+    
+       for (int i = 0; i < size; ++i){          
+            combinedString = ""; 
+           for(int j = 0; j < 4 && std::getline(fin,line); ++j){
+               combinedString += line;
+               if (j < 3){
+                   combinedString += ", ";
            }
        }
-      vec[i] = combinedString;
+      vec.push_back(combinedString);
       
        }
         fin.close();
@@ -21,15 +23,15 @@ void Address::read_file(){
     }
 }
 
-void Address::output_file(){
-    std::ofstream fout("out.txt");
-
+void Address::output_file(std::ofstream &fout){
     if(fout.is_open()){
-        for (size_t i = vec.size(); i > 0; --i){
-            fout << vec[i];
+
+        // for (size_t i = vec.size(); i > 0; --i){
+            for(auto i = vec.rbegin(); i != vec.rend(); ++i){ 
+            fout << *i << std::endl;
         }
     } else {
-        std::cout<< "FILE OPEN ERROR\n";
+        std::cout<< "FILE OPEN ERROR 1\n";
     }
    
     fout.close();
@@ -38,12 +40,3 @@ void Address::output_file(){
 
 
 
-
-/*  Основная идея реализации: создать матрицу размером N на 4, 
-где 4 - это все поля которые надо вывести.
-Индекс I - принадлежит городам
-Индекс J - будет содержать остальные поля.
-
-Вывод будет начинаться с конца от города до номера квартиры.
-
-*/

@@ -16,11 +16,10 @@ class Address
 {
 public:
     Address(){};
-    void read_file();
-    void output_file();
+    void read_file(std::ifstream &fin);
+    void output_file(std::ofstream &fout);
 private:
-    std::string combinedString;
-    std::string line;
+    std::string combinedString,  take_size, line;
     int size; 
     std::vector<std::string> vec;
 };
