@@ -10,6 +10,7 @@
 #include <vector>
 #include <cstddef>
 #include <vector>
+#include <algorithm>
 
 class Address_sort
 {
@@ -18,9 +19,8 @@ public:
     void read_file(std::ifstream &fin);
     void output_file(std::ofstream &fout);
 private:
-    std::string combinedString;
-    std::string line;
-    int size;
+    std::string combinedString,  take_size, line;
+    int size; 
     std::vector<std::string> vec;
 };
 
