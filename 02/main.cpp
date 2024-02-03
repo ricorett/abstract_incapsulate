@@ -1,10 +1,26 @@
 #include "address_sort.hpp"
 
-int main() {
-    Address_sort adr_file;
-    std::ifstream fin("in.txt");
-    std::ofstream fout("out.txt");
-    adr_file.read_file(fin);
-    adr_file.output_file(fout);
-    return 0;
-}
+ int main() {
+
+     std::ifstream fin("in.txt");
+     std::ofstream fout("out.txt");
+        int size;
+        fin >> size;
+      std::vector<Address> addresses(size);
+       for (int i = 0; i < size; ++i) {
+        addresses[i].readAddress(fin);
+    }
+     std::sort(addresses.begin(), addresses.end(), Address::compareAddresses);
+    fout << size << std::endl;
+     for (int i = 0; i < size; ++i) {
+        addresses[i].writeAddresses(fout);
+    }
+    fin.close();
+    fout.close();
+
+//     addressSort.read_file(fin);
+//     addressSort.sort_addresses();
+//     addressSort.write_to_file("out.txt");
+
+     return 0;
+ }
